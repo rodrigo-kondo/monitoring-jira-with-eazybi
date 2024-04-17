@@ -1,0 +1,92 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/issuetypescheme?expand=projects",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "limit_value": 50,
+      "concurrency": 10,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:00",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Issue Type Scheme Management",
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "Issue Type Scheme",
+      "dimension_level": "",
+      "name_column": true
+    },
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "Issue Type Scheme",
+      "dimension_level": "",
+      "key_column": true,
+      "property": "Key"
+    },
+    {
+      "name": "description",
+      "data_type": "text",
+      "dimension": "Issue Type Scheme",
+      "dimension_level": "",
+      "property": "Description"
+    },
+    {
+      "name": "isDefault",
+      "data_type": "string"
+    },
+    {
+      "name": "defaultIssueTypeId",
+      "data_type": "integer"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    },
+    {
+      "name": "projects\nmaxResults",
+      "data_type": "string",
+      "javascript_code": "if(value > 0){\n  return 'Active'\n}else{\n  return 'Inactive'\n}",
+      "dimension": "Issue Type Scheme Status"
+    },
+    {
+      "name": "projects\nstartAt",
+      "data_type": "integer"
+    },
+    {
+      "name": "projects\ntotal",
+      "data_type": "integer"
+    },
+    {
+      "name": "projects\nisLast",
+      "data_type": "string"
+    },
+    {
+      "name": "projects\nvalues",
+      "data_type": "array"
+    }
+  ]
+}

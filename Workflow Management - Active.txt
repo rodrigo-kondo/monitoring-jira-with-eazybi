@@ -1,0 +1,75 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/workflow/search?isActive=true",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "limit_value": 50,
+      "concurrency": 10,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:30",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Workflow Management",
+  "columns": [
+    {
+      "name": "id\nname",
+      "data_type": "string",
+      "dimension": "Workflow",
+      "property": "Workflow Name"
+    },
+    {
+      "name": "id\nentityId",
+      "data_type": "string",
+      "dimension": "Workflow",
+      "property": "Workflow entityId"
+    },
+    {
+      "name": "description",
+      "data_type": "string",
+      "dimension": "Workflow",
+      "property": "Workflow Description"
+    },
+    {
+      "name": "created",
+      "data_type": "datetime",
+      "dimension": "Workflow",
+      "property": "Workflow created date"
+    },
+    {
+      "name": "updated",
+      "data_type": "datetime"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    },
+    {
+      "name": "Workflow Status",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "return \"Active\"",
+      "dimension": "Workflow Status"
+    }
+  ]
+}

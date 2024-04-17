@@ -1,0 +1,92 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/statuses/search?expand=usages,workflowUsages",
+      "request_method": "get",
+      "pagination": "next_page_url",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "offset",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "limit",
+      "limit_parameter_in_body": null,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values",
+      "next_page_url_property": "nextPage"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "09:00",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Status Management",
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "Status",
+      "dimension_level": "",
+      "name_column": true
+    },
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "Status",
+      "dimension_level": "",
+      "property": "Status ID"
+    },
+    {
+      "name": "statusCategory",
+      "data_type": "string",
+      "dimension": "Status Category"
+    },
+    {
+      "name": "scope\ntype",
+      "data_type": "string",
+      "dimension": "Scope Type"
+    },
+    {
+      "name": "description",
+      "data_type": "string",
+      "dimension": "Status",
+      "dimension_level": "",
+      "property": "Status Description"
+    },
+    {
+      "name": "usages",
+      "data_type": "array"
+    },
+    {
+      "name": "In use",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "var use\nif(_.some(doc.usages, \"project\", true, false)){\n  use = \"In use\"\n}else{\n  use = \"Not in use\"\n}\nreturn use",
+      "dimension": "In use"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    },
+    {
+      "name": "workflowUsages",
+      "data_type": "array"
+    },
+    {
+      "name": "In use in any workflow",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "var use\nif(_.some(doc.workflowUsages, \"workflowName\", true, false)){\n  use = \"In use\"\n}else{\n  use = \"Not in use\"\n}\nreturn use",
+      "dimension": "In use in workflow"
+    }
+  ]
+}

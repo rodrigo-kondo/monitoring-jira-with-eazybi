@@ -1,0 +1,83 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/issuetypescreenscheme?expand=projects",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "limit_value": 50,
+      "concurrency": 10,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:30",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Issue Type Screen Scheme Management",
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "IssueType Screen Scheme",
+      "name_column": true
+    },
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "IssueType Screen Scheme",
+      "property": "IssueType Screen Scheme id"
+    },
+    {
+      "name": "description",
+      "data_type": "string"
+    },
+    {
+      "name": "projects\nmaxResults",
+      "data_type": "integer"
+    },
+    {
+      "name": "Status",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "if(doc.projects.maxResults > 0){\n  return \"In use\";\n}else{\n  return \"Not in use\";\n}",
+      "dimension": "IssueType Screen Scheme Status"
+    },
+    {
+      "name": "projects\nstartAt",
+      "data_type": "integer"
+    },
+    {
+      "name": "projects\ntotal",
+      "data_type": "integer"
+    },
+    {
+      "name": "projects\nisLast",
+      "data_type": "string"
+    },
+    {
+      "name": "projects\nvalues",
+      "data_type": "array"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    }
+  ]
+}

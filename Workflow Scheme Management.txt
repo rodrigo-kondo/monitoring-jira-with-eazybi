@@ -1,0 +1,151 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/workflowscheme",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "next_page_url_property": "nextPage",
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values",
+      "limit_value": 50,
+      "concurrency": 10
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "08:00",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Workflow Scheme Management",
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "Workflow Scheme",
+      "property": "Workflow Scheme Name"
+    },
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "Workflow Scheme",
+      "property": "Workflow Scheme id"
+    },
+    {
+      "name": "description",
+      "data_type": "string",
+      "dimension": "Workflow Scheme",
+      "property": "Workflow Scheme Description"
+    },
+    {
+      "name": "defaultWorkflow",
+      "data_type": "string"
+    },
+    {
+      "name": "self",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10002",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10001",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10004",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10003",
+      "data_type": "string"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    },
+    {
+      "name": "issueTypeMappings\n10007",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10006",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10005",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10019",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10018",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10015",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10017",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10016",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10044",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10039",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10454",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10099",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10046",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10048",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10047",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10050",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypeMappings\n10049",
+      "data_type": "string"
+    }
+  ]
+}
