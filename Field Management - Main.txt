@@ -1,0 +1,120 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/field",
+      "request_method": "get",
+      "pagination": "none",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "offset",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "limit",
+      "limit_parameter_in_body": null,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json"
+    },
+    "columns_options": {
+      "hide_unmapped": true
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "08:30",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Fields Management",
+  "columns": [
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "Field",
+      "dimension_level": "",
+      "name_column": true
+    },
+    {
+      "name": "id",
+      "data_type": "string",
+      "dimension": "Field",
+      "dimension_level": "",
+      "key_column": true
+    },
+    {
+      "name": "key",
+      "data_type": "string"
+    },
+    {
+      "name": "custom",
+      "data_type": "string",
+      "dimension": "Is Custom Field"
+    },
+    {
+      "name": "orderable",
+      "data_type": "string"
+    },
+    {
+      "name": "navigable",
+      "data_type": "string"
+    },
+    {
+      "name": "searchable",
+      "data_type": "string"
+    },
+    {
+      "name": "clauseNames",
+      "data_type": "array"
+    },
+    {
+      "name": "schema\ntype",
+      "data_type": "string",
+      "dimension": "Schema Type"
+    },
+    {
+      "name": "schema\nitems",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\nsystem",
+      "data_type": "string"
+    },
+    {
+      "name": "untranslatedName",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\ncustom",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\ncustomId",
+      "data_type": "integer"
+    },
+    {
+      "name": "scope\ntype",
+      "data_type": "string"
+    },
+    {
+      "name": "scope\nproject\nid",
+      "data_type": "integer"
+    },
+    {
+      "name": "schema\nconfiguration\nisMulti",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\nconfiguration\npolarisSubType",
+      "data_type": "string"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/field/search?expand=lastUsed",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "limit_value": 50,
+      "concurrency": 10,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": null,
+      "regular_import_at": "",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Fields Management",
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "string",
+      "dimension": "Field",
+      "key_column": true,
+      "skip_missing": true
+    },
+    {
+      "name": "name",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\ntype",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\nitems",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\nsystem",
+      "data_type": "string"
+    },
+    {
+      "name": "description",
+      "data_type": "text",
+      "dimension": "Field",
+      "property": "Description"
+    },
+    {
+      "name": "lastUsed\ntype",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\ncustom",
+      "data_type": "string"
+    },
+    {
+      "name": "schema\ncustomId",
+      "data_type": "integer"
+    },
+    {
+      "name": "lastUsed\nvalue",
+      "data_type": "datetime",
+      "dimension": "Field",
+      "property": "Last used"
+    }
+  ]
+}
