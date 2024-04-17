@@ -1,0 +1,88 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/group/member?groupname=confluence-users",
+      "request_method": "get",
+      "pagination": "next_page_url",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "offset",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "limit",
+      "limit_parameter_in_body": null,
+      "next_page_url_property": "nextPage",
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "09:00",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Confluence License Management",
+  "columns": [
+    {
+      "name": "self",
+      "data_type": "string"
+    },
+    {
+      "name": "accountId",
+      "data_type": "string",
+      "dimension": "Account id"
+    },
+    {
+      "name": "avatarUrls\n48x48",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n24x24",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n16x16",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n32x32",
+      "data_type": "string"
+    },
+    {
+      "name": "displayName",
+      "data_type": "string",
+      "dimension": "Display Name"
+    },
+    {
+      "name": "active",
+      "data_type": "string",
+      "dimension": "Active"
+    },
+    {
+      "name": "timeZone",
+      "data_type": "string"
+    },
+    {
+      "name": "accountType",
+      "data_type": "string",
+      "dimension": "Account type"
+    },
+    {
+      "name": "emailAddress",
+      "data_type": "string",
+      "dimension": "Email Address"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    }
+  ]
+}
