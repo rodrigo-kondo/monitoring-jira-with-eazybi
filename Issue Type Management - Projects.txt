@@ -1,0 +1,120 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/project/search?expand=issueTypes",
+      "request_method": "get",
+      "pagination": "next_page_url",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "offset",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "limit",
+      "limit_parameter_in_body": null,
+      "next_page_url_property": "nextPage",
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:30",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Issue Type Management",
+  "columns": [
+    {
+      "name": "expand",
+      "data_type": "string"
+    },
+    {
+      "name": "self",
+      "data_type": "string"
+    },
+    {
+      "name": "id",
+      "data_type": "integer"
+    },
+    {
+      "name": "key",
+      "data_type": "string",
+      "dimension": "Project Key"
+    },
+    {
+      "name": "issueTypes",
+      "data_type": "array"
+    },
+    {
+      "name": "Issue types in use",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "var issueTypes = doc.issueTypes;\nvar issueTypeContexts = [];\nfor(var i = issueTypes.length-1; i>= 0; i--) {\n   var issueTypeId = issueTypes[i];\n    issueTypeContexts.push(\n       issueTypeId.id\n    );\n}\nreturn issueTypeContexts;",
+      "dimension": "Project Key",
+      "property": "issueTypesInUse"
+    },
+    {
+      "name": "name",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n48x48",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n24x24",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n16x16",
+      "data_type": "string"
+    },
+    {
+      "name": "avatarUrls\n32x32",
+      "data_type": "string"
+    },
+    {
+      "name": "projectTypeKey",
+      "data_type": "string"
+    },
+    {
+      "name": "simplified",
+      "data_type": "string"
+    },
+    {
+      "name": "style",
+      "data_type": "string"
+    },
+    {
+      "name": "isPrivate",
+      "data_type": "string"
+    },
+    {
+      "name": "entityId",
+      "data_type": "string"
+    },
+    {
+      "name": "uuid",
+      "data_type": "string"
+    },
+    {
+      "name": "projectCategory\nself",
+      "data_type": "string"
+    },
+    {
+      "name": "projectCategory\nid",
+      "data_type": "integer"
+    },
+    {
+      "name": "projectCategory\nname",
+      "data_type": "string"
+    },
+    {
+      "name": "projectCategory\ndescription",
+      "data_type": "string"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/issuetype",
+      "request_method": "get",
+      "pagination": "none",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "offset",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "limit",
+      "limit_parameter_in_body": null,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:00",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Issue Type Management",
+  "columns": [
+    {
+      "name": "self",
+      "data_type": "string"
+    },
+    {
+      "name": "name",
+      "data_type": "string",
+      "dimension": "IssueType",
+      "dimension_level": ""
+    },
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "IssueType",
+      "dimension_level": "",
+      "property": "Key"
+    },
+    {
+      "name": "description",
+      "data_type": "string"
+    },
+    {
+      "name": "iconUrl",
+      "data_type": "string"
+    },
+    {
+      "name": "untranslatedName",
+      "data_type": "string"
+    },
+    {
+      "name": "subtask",
+      "data_type": "string",
+      "dimension": "Is SubTask"
+    },
+    {
+      "name": "avatarId",
+      "data_type": "integer"
+    },
+    {
+      "name": "hierarchyLevel",
+      "data_type": "integer"
+    },
+    {
+      "name": "scope\ntype",
+      "data_type": "string",
+      "dimension": "Issue Type Scope",
+      "javascript_code": "if(value == null){\n  return 'Global'\n}else{\n  return 'Team-managed project'\n}"
+    },
+    {
+      "name": "scope\nproject\nid",
+      "data_type": "integer"
+    },
+    {
+      "name": "Row count",
+      "dimension": "Measures",
+      "dimension_member": "Row count",
+      "data_type": "integer",
+      "source_column_name": "(internal)",
+      "calculation": "row_count"
+    }
+  ]
+}

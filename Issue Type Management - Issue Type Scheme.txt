@@ -1,0 +1,81 @@
+{
+  "application_type": "rest_api",
+  "application_params": {
+    "source_params": {
+      "url": "https://your-instance.atlassian.net/rest/api/3/issuetypescheme?expand=issueTypes",
+      "request_method": "get",
+      "pagination": "offset_limit",
+      "page_parameter": "page",
+      "page_parameter_in_body": null,
+      "offset_parameter": "startAt",
+      "offset_parameter_in_body": null,
+      "limit_parameter": "total",
+      "limit_parameter_in_body": null,
+      "limit_value": 50,
+      "concurrency": 10,
+      "incremental": null,
+      "incremental_stop_import": null,
+      "authentication_type": "header",
+      "authentication_header_name": "Authorization",
+      "content_type": "json",
+      "json_data_path": "$.values"
+    },
+    "extra_options": {
+      "regular_import_frequency": 86400,
+      "regular_import_at": "07:30",
+      "time_zone": "Buenos Aires"
+    }
+  },
+  "source_cube_name": "Issue Type Management",
+  "columns": [
+    {
+      "name": "id",
+      "data_type": "integer",
+      "dimension": "IssueTypeScheme"
+    },
+    {
+      "name": "name",
+      "data_type": "string"
+    },
+    {
+      "name": "description",
+      "data_type": "string"
+    },
+    {
+      "name": "isDefault",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypes\nmaxResults",
+      "data_type": "integer"
+    },
+    {
+      "name": "issueTypes\nstartAt",
+      "data_type": "integer"
+    },
+    {
+      "name": "issueTypes\ntotal",
+      "data_type": "integer"
+    },
+    {
+      "name": "issueTypes\nisLast",
+      "data_type": "string"
+    },
+    {
+      "name": "issueTypes\nvalues",
+      "data_type": "array"
+    },
+    {
+      "name": "Issue types in use",
+      "data_type": "string",
+      "source_column_name": "(internal)",
+      "javascript_code": "var issueTypes = doc.issueTypes.values;\nvar issueTypeContexts = [];\nfor(var i = issueTypes.length-1; i>= 0; i--) {\n   var issueTypeId = issueTypes[i];\n    issueTypeContexts.push(\n       issueTypeId.id\n    );\n}\nreturn issueTypeContexts;",
+      "dimension": "IssueTypeScheme",
+      "property": "issueTypesInUse"
+    },
+    {
+      "name": "defaultIssueTypeId",
+      "data_type": "integer"
+    }
+  ]
+}
